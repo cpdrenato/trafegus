@@ -10,13 +10,9 @@ use WR\Trafegus\Trafegus;
 use WR\Trafegus\Terminal;
 
 //Credencial para Homologação
-/*$host = 'http://144.22.108.228/ws_prestor/public/api/'; //Endpoint da API
+$host = 'http://144.22.108.228/ws_prestor/public/api/'; //Endpoint da API
 $key = 'GG:1'; //Usuario:Senha
 $mode = 'homologation'; //production (produção) /homologation (homologação)
-*/
-$host = 'http://monitoramento.grglobal.com.br/ws_rest/public/api/'; //Endpoint da API
-$key = 'wssogg:grapkglobal'; //Usuario:Senha
-$mode = 'production'; //production (produção) /homologation (homologação)
 
 //Envocando a classe trafegus
 $api = new Trafegus($host, $key, $mode);
