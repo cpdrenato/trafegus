@@ -22,7 +22,7 @@ class Trafegus
     private $veiculo;
     private $posicao;
 
-    public function __construct($host, $key, $mode)
+    public function __construct($host, $key, $mode = 'homologation')
     {
         $this->terminal = new Terminal($mode);
         $this->motorista = new Motorista($mode);
