@@ -58,7 +58,6 @@ class Terminal
      */
     public function setVersao($versao)
     {
-        $versao = ($this->mode == 'production') ? MODE_PRODUCTION : MODE_HOMOLOGATION;
         $this->campos['versao_tecnologia'] = $versao;
         return $this;
     }
@@ -70,10 +69,8 @@ class Terminal
     public function create($campos = null)
     {
         if ($campos != null) $this->campos = $campos;
-
         if (empty($this->campos['identificador'])) throw new TrafegusException;
-        if (empty($this->campos['versao_tecnologia'])) throw new TrafegusException;
-        //if (empty($this->campos['versao_tecnologia'])) $campos['versao_tecnologia'] = ($this->mode=='production') ? MODE_PRODUCTION : MODE_HOMOLOGATION;
+        if (empty($this->campos['versao_tecnologia'])) $this->campos['versao_tecnologia'] = ($this->mode=='production') ? self::MODE_PRODUCTION : self::MODE_HOMOLOGATION;
 
         return $this->curl->post('aparelho', $this->campos);
     }
