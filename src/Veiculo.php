@@ -123,11 +123,10 @@ class Veiculo
 
         if (empty($this->campos['placa'])) throw new TrafegusException;
         if (empty($this->campos['tipo_veiculo'])) throw new TrafegusException;
-        if (empty($this->campos['data_computador_bordo'])) throw new TrafegusException;
-        if (empty($this->campos['renavam'])) throw new TrafegusException;
-        if (empty($this->campos['chassi'])) throw new TrafegusException;
-        if (empty($this->campos['ano_fabricacao'])) throw new TrafegusException;
 
-        return $this->curl->post('veiculo', $this->campos);
+        $cadastro = array();
+        $cadastro['veiculo'][] = $this->campos;
+
+        return $this->curl->post('veiculo', $cadastro);
     }
 }

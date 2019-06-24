@@ -115,7 +115,7 @@ class Posicao
         if ($campos != null) $this->campos = $campos;
 
         if (empty($this->campos['terminal'])) throw new TrafegusException;
-        if (empty($this->campos['versao_tecnologia'])) $this->campos['versao_tecnologia'] = ($this->mode=='production') ? self::MODE_PRODUCTION : self::MODE_HOMOLOGATION;
+        if (empty($this->campos['versao_tecnologia'])) $this->campos['versao_tecnologia'] = ($this->mode == 'production') ? self::MODE_PRODUCTION : self::MODE_HOMOLOGATION;
         if (empty($this->campos['data_computador_bordo'])) throw new TrafegusException;
         if (empty($this->campos['latitude'])) throw new TrafegusException;
         if (empty($this->campos['longitude'])) throw new TrafegusException;
