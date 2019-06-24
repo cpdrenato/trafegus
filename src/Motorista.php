@@ -21,11 +21,19 @@ class Motorista
      */
     private $curl;
 
+    /**
+     * mode
+     * @access private
+     * @var string
+     */
+    private $mode;
+
     private $campos = array();
 
-    public function __construct()
+    public function __construct($mode)
     {
         $this->curl = CURL::getInstance();
+        $this->mode = $mode;
     }
 
     /**
@@ -229,16 +237,15 @@ class Motorista
     }
 
     /**
-     * Cria um novo dispositivo
+     * Cria um novo motorista
      * @param $campos array;
-     * @uses $api->device->addTag('info', 'teste')->create('69aeecc1-7b58-44d1-8000-7767de437adf');
      */
     public function create($campos = null)
     {
         if ($campos != null) $this->campos = $campos;
 
         if (empty($this->campos['cpf_motorista'])) throw new TrafegusException;
-        if (empty($this->campos['nome'])) $campos['nome'] = VERSAO_MODE_DEVELOPER;
+        if (empty($this->campos['nome'])) throw new TrafegusException;
         if (empty($this->campos['data_nasc'])) throw new TrafegusException;
         if (empty($this->campos['rg'])) throw new TrafegusException;
         if (empty($this->campos['rg_uf'])) throw new TrafegusException;

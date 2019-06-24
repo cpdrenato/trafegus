@@ -14,9 +14,9 @@ use WR\Trafegus\Exception\TrafegusException;
 
 class Terminal
 {
-    // ENUMS //
-    const VERSAO_MODE_PRODUCTION = 6672;
-    const VERSAO_MODE_DEVELOPER = 8;
+    // AMBIENTE
+    const MODE_PRODUCTION = 6672;
+    const MODE_HOMOLOGATION = 8;
 
     /**
      * Objeto que irá enviar as requisições
@@ -25,11 +25,19 @@ class Terminal
      */
     private $curl;
 
+    /**
+     * mode
+     * @access private
+     * @var string
+     */
+    private $mode;
+
     private $campos = array();
 
-    public function __construct()
+    public function __construct($mode)
     {
         $this->curl = CURL::getInstance();
+        $this->mode = $mode;
     }
 
     /**
@@ -55,16 +63,15 @@ class Terminal
     }
 
     /**
-     * Cria um novo dispositivo
+     * Cria um novo terminal
      * @param $campos array;
-     * @uses $api->device->addTag('info', 'teste')->create('69aeecc1-7b58-44d1-8000-7767de437adf');
      */
     public function create($campos = null)
     {
         if ($campos != null) $this->campos = $campos;
 
         if (empty($this->campos['identificador'])) throw new TrafegusException;
-        if (empty($this->campos['versao_tecnologia'])) $campos['versao_tecnologia'] = VERSAO_MODE_DEVELOPER;
+        if (empty($this->campos['versao_tecnologia'])) $campos['versao_tecnologia'] = ($this->mode=='production') ? MODE_PRODUCTION : MODE_HOMOLOGATION;
 
         return $this->curl->post('aparelho', $this->campos);
     }

@@ -1,7 +1,8 @@
 <?php
 require_once(dirname(__FILE__) . '/../../src/Trafegus.php');
-require_once(dirname(__FILE__) . '/../../src/Motorista.php');
 require_once(dirname(__FILE__) . '/../../src/Terminal.php');
+require_once(dirname(__FILE__) . '/../../src/Motorista.php');
+require_once(dirname(__FILE__) . '/../../src/Veiculo.php');
 require_once(dirname(__FILE__) . '/../../src/Posicao.php');
 require_once(dirname(__FILE__) . '/../../src/CURL.php');
 
@@ -9,13 +10,14 @@ use WR\Trafegus\Trafegus;
 use WR\Trafegus\Motorista;
 
 //Credencial para Homologação
-$hostApi = 'http://144.22.108.228/ws_prestor/public/api/';
-$authorizationRestApiKey = 'GG:1';
-$modeSystem = 'DEVELOPED';
+$host = 'http://144.22.108.228/ws_prestor/public/api/'; //Endpoint da API
+$key = 'GG:1'; //Usuario:Senha
+$mode = 'homologation'; //production (produção) /homologation (homologação)
 
-$api = new Trafegus($hostApi, $authorizationRestApiKey);
+//Envocando a classe trafegus
+$api = new Trafegus($host, $key, $mode);
 
-//Criando um Terminal/Dispositivo
+//Definido o metódo Motorista
 $retorno = $api->motorista->setDocumento('69371875569')
                 ->setNome('WR TESTE')
                 ->setDataNascimento('10/10/1984')

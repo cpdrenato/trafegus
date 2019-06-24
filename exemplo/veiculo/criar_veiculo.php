@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/../../src/Posicao.php');
 require_once(dirname(__FILE__) . '/../../src/CURL.php');
 
 use WR\Trafegus\Trafegus;
-use WR\Trafegus\Posicao;
+use WR\Trafegus\Veiculo;
 
 //Credencial para Homologação
 $host = 'http://144.22.108.228/ws_prestor/public/api/'; //Endpoint da API
@@ -17,13 +17,14 @@ $mode = 'homologation'; //production (produção) /homologation (homologação)
 //Envocando a classe trafegus
 $api = new Trafegus($host, $key, $mode);
 
-//Definido o metódo Posição
-$retorno = $api->posicao->setTerminal('50167')
-    ->setVersao(8)
-    ->setData('2019-06-23 23:47:00')
-    ->setLatitude('-27.0956344000')
-    ->setLongitude('-52.6174508000')
-    ->setCache('1')
+//Definido o metódo Veiculo
+$retorno = $api->veiculo->setPlaca('QBV1377')
+    ->setTipoVeiculo(2)
+    ->setTipoCombustivel(2)
+    ->setRenavam('4553534543')
+    ->setChassi('5648444')
+    ->setAnoFabricacao('2019')
+    ->setCidadeEmplacamento('1')
     ->create();
 
 print_r($retorno);

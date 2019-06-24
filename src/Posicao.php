@@ -14,6 +14,10 @@ use WR\Trafegus\Exception\TrafegusException;
 
 class Posicao
 {
+    // AMBIENTE
+    const MODE_PRODUCTION = 6672;
+    const MODE_HOMOLOGATION = 8;
+
     /**
      * Objeto que irá enviar as requisições
      * @access private
@@ -21,11 +25,19 @@ class Posicao
      */
     private $curl;
 
+    /**
+     * mode
+     * @access private
+     * @var string
+     */
+    private $mode;
+
     private $campos = array();
 
-    public function __construct()
+    public function __construct($mode)
     {
         $this->curl = CURL::getInstance();
+        $this->mode = $mode;
     }
 
     /**
@@ -95,16 +107,15 @@ class Posicao
     }
 
     /**
-     * Cria um novo dispositivo
+     * Cria uma nova posicao
      * @param $campos array;
-     * @uses $api->device->addTag('info', 'teste')->create('69aeecc1-7b58-44d1-8000-7767de437adf');
      */
     public function create($campos = null)
     {
         if ($campos != null) $this->campos = $campos;
 
         if (empty($this->campos['terminal'])) throw new TrafegusException;
-        if (empty($this->campos['versao_tecnologia'])) $campos['versao_tecnologia'] = VERSAO_MODE_DEVELOPER;
+        if (empty($this->campos['versao_tecnologia'])) $campos['versao_tecnologia'] = ($this->mode=='production') ? MODE_PRODUCTION : MODE_HOMOLOGATION;
         if (empty($this->campos['data_computador_bordo'])) throw new TrafegusException;
         if (empty($this->campos['latitude'])) throw new TrafegusException;
         if (empty($this->campos['longitude'])) throw new TrafegusException;
