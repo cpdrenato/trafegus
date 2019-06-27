@@ -246,22 +246,6 @@ class Motorista
 
         if (empty($this->campos['cpf_motorista'])) throw new TrafegusException;
         if (empty($this->campos['nome'])) throw new TrafegusException;
-        if (empty($this->campos['data_nasc'])) throw new TrafegusException;
-        if (empty($this->campos['rg'])) throw new TrafegusException;
-        if (empty($this->campos['rg_uf'])) throw new TrafegusException;
-        if (empty($this->campos['nro_cnh'])) throw new TrafegusException;
-        if (empty($this->campos['categoria_cnh'])) throw new TrafegusException;
-        if (empty($this->campos['validade_cnh'])) throw new TrafegusException;
-        if (empty($this->campos['cnh_uf'])) throw new TrafegusException;
-        if (empty($this->campos['cep'])) throw new TrafegusException;
-        if (empty($this->campos['logradouro'])) throw new TrafegusException;
-        if (empty($this->campos['numero'])) throw new TrafegusException;
-        if (empty($this->campos['complemento'])) throw new TrafegusException;
-        if (empty($this->campos['bairro'])) throw new TrafegusException;
-        if (empty($this->campos['cidade'])) throw new TrafegusException;
-        if (empty($this->campos['sigla_estado'])) throw new TrafegusException;
-        if (empty($this->campos['pais'])) throw new TrafegusException;
-        if (empty($this->campos['senha'])) throw new TrafegusException;
 
         $cadastro = array();
         $cadastro['motorista'][] = $this->campos;

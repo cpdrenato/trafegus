@@ -20,6 +20,7 @@ $mode = 'production'; //production (produção) /homologation (homologação)
 
 //Envocando a classe trafegus
 $api = new Trafegus($host, $key, $mode);
+print_r($api);
 
 //Definido o metódo Terminal
 $retorno = $api->terminal->setIdentificador('777777777')
