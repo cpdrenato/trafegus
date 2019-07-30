@@ -10,7 +10,7 @@
 
 namespace WR\Trafegus;
 
-use WR\Trafegus\Exception\TrafegusException;
+use \WR\Trafegus\Exception\TrafegusException;
 
 class Terminal
 {

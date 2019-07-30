@@ -7,7 +7,7 @@
 * @since 1.0.0
 **/
 
-namespace WR\Trafegus\Exception;
+namespace WR\Trafegus;
 
 class TrafegusException extends \Exception {
 

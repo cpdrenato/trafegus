@@ -14,6 +14,7 @@ use WR\Trafegus\Motorista;
 use WR\Trafegus\Veiculo;
 use WR\Trafegus\Posicao;
 use WR\Trafegus\CURL;
+use WR\Trafegus\TrafegusException;
 
 class Trafegus
 {

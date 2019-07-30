@@ -10,8 +10,6 @@
 
 namespace WR\Trafegus;
 
-use WR\Trafegus\Exception\TrafegusException;
-
 class Posicao
 {
     // AMBIENTE
